@@ -22,7 +22,7 @@ public class ModelRotator : MonoBehaviour
     float dragStartX = 0;
     public void RotModStart()
     {
-        Debug.Log("RotMod" + Input.mousePosition);
+        //Debug.Log("RotMod" + Input.mousePosition);
         dragStartX = Input.mousePosition.x;
     }
     public void RotMod()
@@ -30,6 +30,6 @@ public class ModelRotator : MonoBehaviour
         float rotX = dragStartX -Input.mousePosition.x;
         //Debug.Log("RotMod" + value);
         model.Rotate(0, rotX * Time.deltaTime * speed, 0);
-        Debug.Log("RotMod" + rotX);
+        //Debug.Log("RotMod" + rotX);
     }
 }
