@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GamePart2 : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class GamePart2 : MonoBehaviour
     {
 
     }
+    public void BackBtn()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 
     [Header("Ä£ÐÍÇÐ»»")]
     public GameObject GirlModel;
@@ -55,7 +61,7 @@ public class GamePart2 : MonoBehaviour
     public Image LeftInfo;
     public GameObject[] ToHideObj;
     public GameObject SeeSolutionBtn;
-
+    public Button[] btns;
      int warningIndex;
     public void GoFiveWarningInfo(int index)
     {
@@ -67,6 +73,12 @@ public class GamePart2 : MonoBehaviour
             item.SetActive(false);
         }
         SeeSolutionBtn.SetActive(true);
+
+        foreach (Button btn in btns)
+        {
+            btn.OnDeselect(null);
+        }
+        btns[index].Select();
     }
 
     [Header("SeeSolutionÄÚÈÝ")]

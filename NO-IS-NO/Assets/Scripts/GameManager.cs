@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
@@ -49,21 +49,15 @@ public class GameManager : MonoBehaviour
             obj.SetActive(false);
         }
         phaseObjs[index].SetActive(true);
-
     }
 
     public void BackBtn()
     {
-        title.SetActive(true);
-        foreach (GameObject go in phases)
-        {
-            go.SetActive(false);
-        }
+        SceneManager.LoadScene(0);
     }
 
     [Header("Part1第一部分  012对应  X？√  三个按钮")]
-    public string[] infos;
-    public Color[] infosColor;
+    public Sprite[] infos;
     public Sprite[] signSprs;
     public List<GameObject> p1Signs;
     public TMP_Text infoTMP;
@@ -76,9 +70,9 @@ public class GameManager : MonoBehaviour
         DefaultBlack.SetActive(false);
         sign.gameObject.SetActive(true);
 
-        infoTMP.text = infos[index];
-        textBg.color = infosColor[index];
+        textBg.sprite = infos[index];
         sign.sprite = signSprs[index];
+        sign.SetNativeSize();
 
         for (int i = 0; i < p1Signs.Count; i++)
         {
