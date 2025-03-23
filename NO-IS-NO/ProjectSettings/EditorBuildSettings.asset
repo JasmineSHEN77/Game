@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/S1.unity
     guid: 1928be3ad855374439ebe2d9fc68ef2f
+  - enabled: 1
+    path: Assets/Scenes/Level_2_Loop.unity
+    guid: c2d06543f1219b247908d6ebcdfce8bf
   m_configObjects: {}

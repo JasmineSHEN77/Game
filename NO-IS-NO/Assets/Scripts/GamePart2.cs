@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using TMPro.EditorUtilities;
 
 public class GamePart2 : MonoBehaviour
 {
@@ -62,9 +63,12 @@ public class GamePart2 : MonoBehaviour
     public GameObject[] ToHideObj;
     public GameObject SeeSolutionBtn;
     public Button[] btns;
-     int warningIndex;
+    public Sprite[] btnSpr;
+    public Sprite[] btnSpr_Highlight;
+    int warningIndex;
     public void GoFiveWarningInfo(int index)
     {
+        Debug.Log("GoFiveWarningInfo" + index);
         warningIndex = index;
         LeftInfo.sprite = FiveWarningInfo[index]; 
 
@@ -74,11 +78,18 @@ public class GamePart2 : MonoBehaviour
         }
         SeeSolutionBtn.SetActive(true);
 
+        int i = 0;
         foreach (Button btn in btns)
         {
-            btn.OnDeselect(null);
+            btns[i].transform.GetComponent<Image>().sprite = btnSpr[i];
+            btn.transform.GetComponent<Image>().SetNativeSize();
+            i++;
         }
+
         btns[index].Select();
+        btns[index].GetComponent<Image>().sprite = btnSpr_Highlight[index];
+
+        btns[index].transform.GetComponent<Image>().SetNativeSize();
     }
 
     [Header("SeeSolutionÄÚÈÝ")]
@@ -96,7 +107,9 @@ public class GamePart2 : MonoBehaviour
 
 
     public void GoSimluation()
-    { }
+    {
+        SceneManager.LoadScene("S1");
+    }
 }
 
 
